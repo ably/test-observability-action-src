@@ -1,0 +1,15 @@
+{
+  "name": "test-observability-publish",
+  "version": "0.1.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Ably",
+  "license": "MIT",
+  "description": "Publish test results to ably test observability",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0",
+    "glob": "^7.2.0",
+    "request": "^2.88.2"
+  }
+}
