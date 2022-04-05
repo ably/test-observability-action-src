@@ -55,8 +55,6 @@ try {
 				core.setFailed(err.toString());
 				return;
 			}
-			console.log(url.toString());
-			console.log(body.message);
 			if (response.statusCode < 200 || response.statusCode > 299) {
 				core.setFailed("server returned code " + response.statusCode);
 				return;
