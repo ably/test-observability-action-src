@@ -15,7 +15,6 @@ An action to push junit files to Ably's test observability server.
         if: always()
         uses: ably-labs/test-observability-action@main
         with:
-          server-url: 'https://test-observability.herokuapp.com'
           server-auth: ${{ secrets.TEST_OBSERVABLILITY_SERVER_AUTH }}
           path: '.'
 ```
