@@ -10,5 +10,5 @@ jobs:
       - name: Test action
         uses: ./ # Uses an action in the root directory
         with:
-          server-url: 'http://143.159.186.16:3000'
+          server-url: 'https://test-observability.herokuapp.com'
           server-auth: ${{ secrets.TEST_OBSERVABLILITY_SERVER_AUTH }}
