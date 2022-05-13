@@ -52,13 +52,21 @@ try {
 
 		request(options, function (err, response, body) {
 			if (err) {
+				console.log('Uploading test results failed:');
+				console.log(err);
+				console.log(body);
 				core.setFailed(err.toString());
 				return;
 			}
 			if (response.statusCode < 200 || response.statusCode > 299) {
-				core.setFailed("server returned code " + response.statusCode);
+				console.log('Uploading test results failed:');
+				const msg = "Server returned code " + response.statusCode;
+				console.log(msg);
+				console.log(body);
+				core.setFailed(msg);
 				return;
 			}
+                        console.log('Test results uploaded successfully');
 		});
 	});
 } catch (error) {
