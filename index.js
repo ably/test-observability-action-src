@@ -26,18 +26,14 @@ try {
 			github_action: github.context.action,
 			github_run_number: github.context.runNumber,
 			github_run_attempt: process.env.GITHUB_RUN_ATTEMPT,
-			github_run_id: github.context.runId,
+			github_run_id: github.context.runId.toString(),
 			github_job: github.context.job,
 			github_retention_days: process.env.GITHUB_RETENTION_DAYS,
 			iteration: i + 1
 		}
 
-		if (process.env.GITHUB_BASE_REF) {
-			body.github_base_ref = process.env.GITHUB_BASE_REF;
-		}
-		if (process.env.GITHUB_HEAD_REF) {
-			body.github_head_ref = process.env.GITHUB_HEAD_REF;
-		}
+		body.github_base_ref = process.env.GITHUB_BASE_REF || null;
+		body.github_head_ref = process.env.GITHUB_HEAD_REF || null;
 
 		const headers = {
 			"Test-Observability-Auth-Key": auth
