@@ -2,6 +2,10 @@
   "name": "test-observability-publish",
   "version": "0.1.0",
   "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "package": "ncc build index.js -o dist --source-map --license licenses.txt"
+  },
   "keywords": [],
   "author": "Ably",
   "license": "MIT",
@@ -11,5 +15,8 @@
     "@actions/github": "^5.0.0",
     "glob": "^7.2.0",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.34.0"
   }
 }
