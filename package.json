@@ -1,5 +1,5 @@
 {
-  "name": "test-observability-publish",
+  "name": "test-observability-action",
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
