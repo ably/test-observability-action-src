@@ -16,7 +16,7 @@ try {
 
 	results.forEach((file, i) => {
 		const data = fs.readFileSync(file);
-		b64 = Buffer.from(data).toString('base64');
+		const b64 = Buffer.from(data).toString('base64');
 
 		var body = {
 			junit_report_xml: b64,
