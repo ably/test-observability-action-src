@@ -1,0 +1,31 @@
+# This is a manually triggered workflow (hence on: workflow_dispatch).
+# See: https://docs.github.com/en/actions/reference/events-that-trigger-workflows#manual-events
+
+on: workflow_dispatch
+
+jobs:
+  publish-go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate JS distribution file
+        run: npm run package
+
+      - name: Publish
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ABLY_TEST_OBSERVABILITY_SSH_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > ssh-private-key.pem
+          chmod 400 ssh-private-key.pem
+          eval $(ssh-agent -s)
+          ssh-add ssh-private-key.pem
+          git config --global user.name "Ably Test Observability Action [bot]"
+          git config --global user.email "ably-test-observability-action[bot]@noreply.ably.com"
+          git clone git@github.com:ably/test-observability-action
+          cp -a dist test-observability-action
+          git -C test-observability-action add dist
+          if git diff --cached --exit-code; then
+            git -C test-observability-action commit -m "Update generated code"
+            git -C test-observability-action push
+          fi
