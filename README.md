@@ -1,20 +1,11 @@
-# Test Observability Action
+# Test Observability Action Src
 
-An action to push junit files to Ably's test observability server.
+Source code for https://github.com/ably/test-observability-action
 
-# Inputs
+Changes to the source are made here and then deployed to the downstream
+repo using GitHub actions.
 
-- server-url - url to publish results to
-- server-auth - auth key for server
-- path - path to look for *.junit files
+# Releasing
 
-# Example
-
-```
-      - name: Upload test results
-        if: always()
-        uses: ably-labs/test-observability-action@main
-        with:
-          server-auth: ${{ secrets.TEST_OBSERVABLILITY_SERVER_AUTH }}
-          path: '.'
-```
+Run the publish action to update the downstream repo. Then tag and
+make a release on the downstream repo.
