@@ -1,6 +1,6 @@
 # This is a manually triggered workflow (hence on: workflow_dispatch).
 # See: https://docs.github.com/en/actions/reference/events-that-trigger-workflows#manual-events
-
+name: Publish
 on: workflow_dispatch
 
 jobs:
@@ -10,7 +10,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Generate JS distribution file
-        run: npm run package
+        run: |
+          npm install
+          npm run package
 
       - name: Publish
         env:
